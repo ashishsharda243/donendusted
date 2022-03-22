@@ -221,9 +221,7 @@
                       <label for="">Select Service </label>
                       <select name="category" id="service" class="form-control"  onchange="updateTimes(this.value);" required>
                         <option value="">Choose...</option>
-                        {% for service in services %}
-                        <option value="{{service.service}}">{{service.service}}</option>
-                    {% endfor %}
+                 
                       </select>
                     </div>
                </div>
