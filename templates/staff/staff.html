@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="{% static 'img/logo.png' %}" rel="icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link href="{% static 'css/staff.css' %}" rel="stylesheet">
+        <link href="{% static 'css/animation.css' %}" rel="stylesheet">
+      
+        <link
+        href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+        rel="stylesheet"/>
+      <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+</head>
+
+<body>
+
+    <div class='dashboard background-color '>
+        <div class="dashboard-nav bg-white">
+            <header class="">
+                <a href="#!" class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </a>
+                <a href="/" class="brand-logo">
+                 <span>Tidyquant</span>
+                </a></header>
+            <nav class="dashboard-nav-list ">
+                <a href="#" class="dashboard-nav-item">
+                    <i class='bx bx-dna'></i>
+                    Appointment </a>
+                    <a href="#" class="dashboard-nav-item active">
+                        <i class='bx bx-window-close' ></i>
+                    canceld appointment
+                </a><a href="#" class="dashboard-nav-item"><i class='bx bx-calendar-edit'></i> Update timing </a>
+                <!-- <div class='dashboard-nav-dropdown'><a href="#!"
+                        class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class="fas fa-photo-video"></i>
+                        Media </a>
+                    <div class='dashboard-nav-dropdown-menu'><a href="#" class="dashboard-nav-dropdown-item">All</a><a
+                            href="#" class="dashboard-nav-dropdown-item">Recent</a><a href="#"
+                            class="dashboard-nav-dropdown-item">Images</a><a href="#"
+                            class="dashboard-nav-dropdown-item">Video</a></div>
+                </div> -->
+                <!-- <div class='dashboard-nav-dropdown'><a href="#!"
+                        class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class="fas fa-users"></i> Users </a>
+                    <div class='dashboard-nav-dropdown-menu'><a href="#" class="dashboard-nav-dropdown-item">All</a><a
+                            href="#" class="dashboard-nav-dropdown-item">Subscribed</a><a href="#"
+                            class="dashboard-nav-dropdown-item">Non-subscribed</a><a href="#"
+                            class="dashboard-nav-dropdown-item">Banned</a><a href="#"
+                            class="dashboard-nav-dropdown-item">New</a></div>
+                </div> -->
+                <!-- <div class='dashboard-nav-dropdown'><a href="#!"
+                        class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class="fas fa-money-check-alt"></i>
+                        Payments </a>
+                    <div class='dashboard-nav-dropdown-menu'><a href="#" class="dashboard-nav-dropdown-item">All</a><a
+                            href="#" class="dashboard-nav-dropdown-item">Recent</a><a href="#"
+                            class="dashboard-nav-dropdown-item"> Projections</a>
+                    </div>
+                </div> -->
+                <a href="#" class="dashboard-nav-item"><i class='bx bx-run'></i> Update holidays </a>
+                
+                <!-- <a href="#" class="dashboard-nav-item"><i class="fas fa-user"></i> Profile </a> -->
+                <div class="nav-item-divider"></div>
+            </nav>
+            <a href="#" class="dashboard-nav-item fixed-bottom"><i class='bx bx-log-in' ></i>Logout </a>
+        </div>
+        <section class="booking-section"></section>
+        <div class='dashboard-app'>
+            <header class='dashboard-toolbar'><a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a></header>
+            <div class="container ">
+                <div class="d-flex justify-content-center p-0 m-0">
+                    <div class=" dashboard-card mx-3 my-2 p-4">
+                         <i class='bx bx-dna custom-card-icon'></i>
+                        <div class="count">
+
+                            <p class="h1 text-center">--</p>
+                        </div>
+                        <h5 class="text-center">Daily Bookings</h5>
+                    </div>
+                    <div class=" dashboard-card mx-3 my-2 p-4">
+                         <i class='bx bx-dna custom-card-icon'></i>
+                        <div class="count">
+
+                            <p class="h1 text-center"> {{appoints|length}}</p>
+                        </div>
+                        <h5 class="text-center">Appointments</h5>
+                    </div>
+                    <div class=" dashboard-card mx-3 my-2 p-4">
+                        <i class='bx bx-window-close custom-card-icon' ></i>
+                        <div class="count">
+
+                            <p class="h1 text-center">{{cancelApoints|length}}</p>
+                        </div>
+                        <h5 class="text-center">
+                            Cancelled
+                        </h5>
+                    </div>
+                    <div class=" dashboard-card mx-3 my-2 p-4">
+                        <i class='bx bx-wallet-alt   custom-card-icon'></i>
+                        <div class="count">
+
+                            <p class="h1 text-center">--</p>
+                        </div>
+                        <h5 class="text-center">
+                            Total Earning
+                        </h5>
+                    </div>
+                    <div class=" dashboard-card  mx-3 my-2 p-3">
+                        <i class='bx bx-bar-chart-alt-2   custom-card-icon'></i>
+                        <div class="count">
+
+                            <p class="h1 text-center">--</p>
+                        </div>
+                        <h5 class="text-center">
+                            Avg.Booking/day
+                        </h5>
+                    </div>
+                    <div class=" dashboard-card  mx-3 my-2 p-3">
+                        <i class='bx bx-bar-chart-alt-2   custom-card-icon'></i>
+                        <div class="count">
+
+                            <p class="h1 text-center">{{completedApoints|length}}</p>
+                        </div>
+                        <h5 class="text-center">
+                            Completed 
+                        </h5>
+                    </div>
+                </div>
+                
+            </div>
+
+
+         <section class="booking-section"> 
+           
+
+             <div class='dashboard-content '>
+                <p ><span class="h4">Bookings</span> 
+                   <span class="toggle-btn-container">
+                       <span class="mx-3" >Change View</span>
+                      
+                       <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOdJREFUSEvdlf0RwVAQxH+pgA5QATpQChWgEyqgBCXQAR3QARUwZ97NXB6T95GEmeS/fLzdvb29S0HLV9EyPt0imAE7YFjTtiuwAI6CYy2SF4Oa4HpcsEY+wbMhcIV5i7cV/IVgDWyACXBItDBYwcUBa8lzF4KSBZ6t1oUgwRmYGoDGCQR7BWyBnAgHK1DxJzcbqRGuJHg49XtjkTRa7sfmmb9qonug6fFHow9Ib7SabIKqJSixXUYMZXQPIrC+fvJ7gjvQy5XrnbvpVrZeS9YlJalx9DUJuAzlx7puSHwZplu/zFYsegFKYykZG/0WkwAAAABJRU5ErkJggg=="/>
+                    <label class="switch mx-2">
+                        <input type="checkbox" id="toggle-bookng-view"  onclick="toggleBookingView()">
+                        <span class="slider round"></span>
+                      </label>
+                      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAJZJREFUSEvtldsNgCAMRQ8TOIKO4gg6oa7iBo6gG7iBpiYkQEgwWPiCPyDcR7lpDYWXKYxPVYIRWIDhp6sDmIFdcFwHctH/BLfPN0AEewS3EriFecW7DqoRhB9vibPOYw6ygJzyeoIaQRgU2SdLpJXWFlO/1i2myTh+KdEFdEoZjbZr6d+rwkw4gSk2cJTE+zBVZ3IRBw/wojYZ5nCNwwAAAABJRU5ErkJggg=="/>
+                   </span>
+                </p><hr>
+
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label fw-bold ">Pick a date</label>
+                    <input type="date" class="form-control w-25" id="exampleInputPassword1">
+                  </div>
+                
+                  {% include './cardViewComponent.html' %}
+              <br>
+ 
+
+    <div class='container bg-white'>
+    
+      
+     {% include "./tableViewComponent.html" %}
+    </div>
+</div>
+         </section>
+        </div>
+    </div>
+    <div id="confirmationBox" class="custom-modal d-none">
+
+        <div  class="overlay">
+        </div>
+        <div class="alert-box">
+            <button class="close-btn fw-bold text-white">Close</button>
+           <div class="d-flex mt-2">
+               Are you sure you want to cancel the appointment ?
+           </div>
+           <div class="mt-4">
+               <button class="btn action-btn" id="yes" >Yes</button>
+               <button class="btn action-btn" id="no" >No</button>
+           </div>
+   </div>
+    </div>
+    <div id="messageBox"  class="custom-modal d-none">
+
+        <div class="overlay">
+        </div>
+        <div class="alert-box">
+         
+                <button class="close-btn text-white">Close</button>
+           
+            <form action="">
+                <div class="d-flex fw-bold mt-2">
+                    Please specify the reason.
+                </div>
+                <div class="form-group mt-3">
+                    <textarea name="cancelReason"  cols="30" rows="3"  class="form-control" id="cancelReason"></textarea>
+                  </div>
+                <div class="mt-4">
+                    <button type="submit" id="cancleSubmit" class="btn action-btn fw-bold "  >Submit</button>
+                </div>
+            </form>
+    </div>
+    </div>
+
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+ <script>
+     
+    let cardContainer = document.getElementById("booking-card-container")
+    let bookingTable = document.getElementById("dataTable")
+  
+    bookingTable.parentElement.parentElement.hidden = true
+function toggleBookingView(){
+    let togglebtn = document.getElementById("toggle-bookng-view")
+    togglebtn.toggleAttribute("checked")
+    let isAttribute = togglebtn.hasAttribute("checked")
+    if(isAttribute == true){
+        cardContainer.hidden = true
+        bookingTable.parentElement.parentElement.hidden = false
+    }
+    else{
+        cardContainer.hidden = false
+        bookingTable.parentElement.parentElement.hidden = true
+    }
+}
+
+
+$(' #table-cont').scroll(function(e) { 
+
+    $(this).scrollTop() > 0 ? 
+        $('thead ').addClass('blue-gradient') : 
+        $('thead ').removeClass('blue-gradient');
+});
+
+
+        const mobileScreen = window.matchMedia("(max-width: 990px )");
+        const link = document.querySelectorAll(".dashboard-nav-item");
+        for (let i = 0; i < link.length; i++) {
+  link[i].addEventListener("click", function () {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+        $(document).ready(function () {
+            $(".dashboard-nav-dropdown-toggle").click(function () {
+                $(this).closest(".dashboard-nav-dropdown")
+                    .toggleClass("show")
+                    .find(".dashboard-nav-dropdown")
+                    .removeClass("show");
+                $(this).parent()
+                    .siblings()
+                    .removeClass("show");
+            });
+            $(".menu-toggle").click(function () {
+                if (mobileScreen.matches) {
+                    $(".dashboard-nav").toggleClass("mobile-show");
+                } else {
+                    $(".dashboard").toggleClass("dashboard-compact");
+                }
+            });
+        });
+    </script>
+    	<!-- <SCRIPT language="javascript">
+            function addRow(tableID) {
+    
+                var table = document.getElementById(tableID);
+    
+                var rowCount = table.rows.length;
+                var row = table.insertRow(rowCount);
+    
+                var colCount = table.rows[0].cells.length;
+    
+                for(var i=0; i<colCount; i++) {
+    
+                    var newcell	= row.insertCell(i);
+    
+                    newcell.innerHTML = table.rows[0].cells[i].innerHTML;
+                    //alert(newcell.childNodes);
+                    switch(newcell.childNodes[0].type) {
+                        case "text":
+                                newcell.childNodes[0].value = "";
+                                break;
+                        case "checkbox":
+                                newcell.childNodes[0].checked = false;
+                                break;
+                        case "select-one":
+                                newcell.childNodes[0].selectedIndex = 0;
+                                break;
+                    }
+                }
+            }
+    
+            function deleteRow(tableID) {
+                try {
+                var table = document.getElementById(tableID);
+                var rowCount = table.rows.length;
+    
+                for(var i=0; i<rowCount; i++) {
+                    var row = table.rows[i];
+                    var chkbox = row.cells[0].childNodes[0];
+                    if(null != chkbox && true == chkbox.checked) {
+                        if(rowCount <= 1) {
+                            alert("Cannot delete all the rows.");
+                            break;
+                        }
+                        table.deleteRow(i);
+                        rowCount--;
+                        i--;
+                    }
+    
+    
+                }
+                }catch(e) {
+                    alert(e);
+                }
+            }
+    
+        </SCRIPT> -->
+        <script>
+
+   const clickNo = document.getElementById("no")
+   const clickYes = document.getElementById("yes")
+   const cancleSubmit = document.getElementById("cancleSubmit")
+   const overlay = document.querySelectorAll(".overlay")
+   const closeBtn = document.querySelectorAll(".close-btn")
+//    const cancelReason = document.getElementById("cancelReason")
+//    function send(){
+       
+//    }
+   closeBtn.forEach(closeEl=>{
+    closeEl.addEventListener('click',function(){
+        closeEl.parentElement.parentElement.classList.add("d-none")
+    })
+   })
+   overlay.forEach(el=>{
+    el.addEventListener('click',function(){
+        el.parentElement.classList.add("d-none")     
+    })
+   })
+    const confirmationBox = document.getElementById("confirmationBox")
+    clickNo.addEventListener('click',function(){
+        confirmationBox.classList.add("d-none")
+    })
+
+function valDelete(el){
+    const tl = gsap.timeline({defaults:{duration:0.40,ease:"power-out"}});
+    const messageBox = document.getElementById("messageBox")
+    // const yesClick = document.getElementById('yes')
+    // const noClick = document.getElementById('no')
+    confirmationBox.classList.remove("d-none")
+    tl.fromTo('.alert-box',{scale:0.5},{scale:1})
+    clickYes.addEventListener('click',function(){
+        confirmationBox.classList.add("d-none")
+        messageBox.classList.remove("d-none")  
+        tl.fromTo('.alert-box',{scale:0.5},{scale:1})
+        cancleSubmit.addEventListener('click',()=>{
+
+                $.ajax({
+                type: "GET",
+                url: "{% url 'cancelAppointment' %}",
+                type: "get",
+                data: { id: el},
+                success: function (data) {
+
+                $(data).hide()
+
+                },
+                error: function () {
+                console.log("There was an error, Performance");
+                },
+                });
+        })  
+   
+
+    }
+    )
+
+
+
+}
+
+function valCompleted(el){
+  
+    $.ajax({
+      type: "GET",
+      url: "{% url 'completedAppointment' %}",
+      type: "get",
+      data: { id: el},
+      success: function (data) {
+        
+          $(data).hide()
+
+      },
+      error: function () {
+        console.log("There was an error, Performance");
+      },
+    });
+}
+
+
+// const breakdownButton = document.querySelectorAll('.Cancel');
+// breakdownButton.forEach(function(btn) {
+//   btn.addEventListener('click', function() {
+//       let confirmation = confirm("Do you want to cancel the BOOKING")
+//       if(confirmation == true){
+
+//           let cancelReason = prompt('Please specify the reason!')
+//         btn.parentNode.parentNode.remove()
+//       }
+//       else return
+//   });
+// });
+            
+
+        </script>
+</body>
+
+</html>

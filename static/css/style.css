@@ -44,6 +44,18 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box; 
 }
+.time-slot{
+  height: 52px ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  /* border: 2px solid; */
+  margin-top: 16px;
+  border-radius: 5px;
+  /* padding: 10px 0; */
+}
+
 .site-font-color{
   color: var(--sitefontcolor) !important;
 }
@@ -8053,8 +8065,7 @@ h1, h2, h3, h4, h5,
   padding: 0; }
   .wrap .phone {
     font-size: 12px;
-    color: white;
-    /* color: rgba(255, 255, 255, 0.8); */
+    color: rgba(255, 255, 255, 0.8);
    }
     .wrap .phone a {
       color: white;
@@ -8403,7 +8414,7 @@ h1, h2, h3, h4, h5,
   }
     .btn.btn-primary:hover {
       border: 1px solid var(--sitecolor);
-      background: transparent;
+      /* background: transparent; */
       color: var(--sitefontcolor); }
     .btn.btn-primary.btn-outline-primary {
       border: 1px solid var(--sitecolor);

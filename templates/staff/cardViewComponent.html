@@ -1,0 +1,19 @@
+{% load static %}
+<div class="booking-card-container" id="booking-card-container">
+    {% for data in appoints %}
+    <div class="booking-card box-shadow mx-3">
+        <h2 class="m-0 p-0">{{data.name}}</h2><hr>
+        <sub class="text-muted">Email</sub>
+        <p>{{data.email}}</p>
+        <sub class="text-muted">Mobile</sub>
+        <p>{{data.mobile}}</p>
+        <sub class="text-muted">Service</sub>
+        <p>{{data.service}}</p>
+        <sub class="text-muted">Date And Time</sub>
+        <p>{{data.date}} {{data.time}}</p>
+        <sub class="text-muted">Action</sub>
+        <p><button class="btn rounded glass-bg mr-5"  onclick="valDelete('{{ data.appointId}}');">Cancle</button>
+            <button class="btn rounded glass-bg mx-2 "  onclick="valCompleted('{{ data.appointId}}');">Done</button></p>
+    </div>
+    {% endfor %}
+</div>

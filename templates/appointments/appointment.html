@@ -1,0 +1,411 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<style>
+    /* <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css"><link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.css"> */
+  
+    .card {
+      box-shadow: 0px 4px 8px 0px #7986cb;
+    }
+  
+    /* input {
+      padding: 10px 20px !important;
+      border: 1px solid #000 !important;
+      border-radius: 10px;
+      box-sizing: border-box;
+      background-color: #616161 !important;
+      color: #fff !important;
+      font-size: 16px;
+      letter-spacing: 1px;
+      width: 180px;
+    } */
+  
+    input:focus {
+      -moz-box-shadow: none !important;
+      -webkit-box-shadow: none !important;
+      box-shadow: none !important;
+      border: 1px solid #512da8;
+      outline-width: 0;
+    }
+  
+    ::placeholder {
+      color: #fff;
+      opacity: 1;
+    }
+  
+    :-ms-input-placeholder {
+      color: #fff;
+    }
+  
+    ::-ms-input-placeholder {
+      color: #fff;
+    }
+  
+    button:focus {
+      -moz-box-shadow: none !important;
+      -webkit-box-shadow: none !important;
+      box-shadow: none !important;
+      outline-width: 0;
+    }
+  
+    .datepicker {
+      background-color: #000 !important;
+      color: #fff !important;
+      border: none;
+      padding: 10px !important;
+    }
+  
+    .datepicker-dropdown:after {
+      border-bottom: 6px solid #000;
+    }
+  
+    thead tr:nth-child(3) th {
+      color: #fff !important;
+      font-weight: bold;
+      padding-top: 20px;
+      padding-bottom: 10px;
+    }
+  
+    .dow,
+    .old-day,
+    .day,
+    .new-day {
+      width: 40px !important;
+      height: 40px !important;
+      border-radius: 0px !important;
+    }
+  
+    .old-day:hover,
+    .day:hover,
+    .new-day:hover,
+    .month:hover,
+    .year:hover,
+    .decade:hover,
+    .century:hover {
+      border-radius: 6px !important;
+      background-color: #eee;
+      color: #000;
+    }
+  
+    /* .active {
+      border-radius: 6px !important;
+      background-image: linear-gradient(#90caf9, #64b5f6) !important;
+      color: #000 !important;
+    } */
+  
+    .disabled {
+      color: #616161 !important;
+    }
+  
+    .prev,
+    .next,
+    .datepicker-switch {
+      border-radius: 0 !important;
+      padding: 20px 10px !important;
+      text-transform: uppercase;
+      font-size: 20px;
+      color: #fff !important;
+      opacity: 0.8;
+    }
+  
+    .prev:hover,
+    .next:hover,
+    .datepicker-switch:hover {
+      background-color: inherit !important;
+      opacity: 1;
+    }
+  
+    .cell {
+      /* border: 1px solid #bdbdbd; */
+      border: 1px solid ;
+      margin: 2px;
+      cursor: pointer;
+      font-weight: bold;
+      background-color: #f1f1f1;
+    }
+  .cell-disable{
+    border: 1px solid #bdbdbd;
+      margin: 2px;
+    cursor: not-allowed;
+  }
+    .cell:hover {
+      border: 1px solid #3d5afe;
+    }
+  
+    .cell.select {
+      background-color: #3d5afe;
+      color: #fff;
+      font-weight: bolder;
+    }
+  
+    .fa-calendar {
+      color: #fff;
+      font-size: 30px;
+      padding-top: 8px;
+      padding-left: 5px;
+      cursor: pointer;
+    }
+  
+    .custom-card-body{
+   
+      max-height: 300px;
+      overflow: auto;
+    }
+  
+    .booked {
+      /* background-color: #c4c0c0 !important; */
+      text-decoration: line-through;
+   
+    }
+    /* .booked p{
+      color: #fff;
+      font-weight: 900 !important;
+      z-index: 999;
+    } */
+  
+    /* .green {
+      background: #008000d9 !important;
+      color: #fff;
+      font-weight: bold;
+    } */
+  </style>
+
+
+  <div class="container my-4">
+  
+  
+    <div class="row mx-auto">
+      {% if message %}
+  
+     <div class="col-lg-10 mx-auto">
+      <div class="alert alert-warning alert-dismissible fade show" role="alert" id="success-alert">
+        <strong>congratulation!</strong> {{message}}.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endif %}
+     </div>
+    
+      <div class="col-lg-10 mx-auto">
+        <div class="card border-0 ">
+          <form autocomplete="off" method="post" action="" class="my-3 px-5">
+            {% csrf_token %}
+            <h2 class=" text-center " >Appointment Details</h2><hr>
+           <div class="row ">
+               <div class="col-md-6 col-12">
+                  <div class="form-group">
+                      <label for=""> Name</label>
+                      <input type="text" class="form-control" name="name" required>
+                    </div>
+                   
+               </div>
+               <div class="col-md-6 col-12">
+                  <div class="form-group">
+                      <label for=""> Email</label>
+                      <input type="email" class="form-control" name="email" required>
+                    </div>
+               </div>
+           </div>
+           <div class="row mt-2">
+               <div class="col-md-6 col-12">
+                  <div class="form-group">
+                      <label for=""> Mobile</label>
+                      <input type="text" class="form-control" name="mobile">
+                    </div>
+                    
+               </div>
+               <div class="col-md-6 col-12">
+                  <div class="form-group">
+                      <label for="">Select Service </label>
+                      <select name="category" id="service" class="form-control"  onchange="updateTimes(this.value);" required>
+                        <option value="">Choose...</option>
+                        {% for service in services %}
+                        <option value="{{service.service}}">{{service.service}}</option>
+                    {% endfor %}
+                      </select>
+                    </div>
+               </div>
+           </div>
+            <br>
+            <div class="row">
+  
+              <div class="form-group col-sm-12 col-md-6">
+                  <label for="">Select Date</label>
+                  <input type="date" name="date" id="date" class="form-control"  onchange="updateTimes(this.value);" required>
+              </div>
+  
+              <div class="form-group col-md-6 col-sm-12" id="showSlots">
+                <label for="">  &nbsp;</label>
+                <input type="button" class="form-control fw-bold" value="Show Availabe Slots" onclick="showBtn()">
+              </div>
+              
+          
+              <div class="col-md-6 col-sm-12 d-none" id="slotSection">
+                <div class="card-body custom-card-body px-0">
+                  <div class="row text-center mx-0 px-0" id="time-slots">
+                   
+                    <!-- {% for time in times %}
+                    <div class=" col-md-4 col-sm-6 my-1">
+                      <div class="cell py-1">{{ time }}:00AM
+                        <input type="hidden" value="{{time}}" />
+                      </div>
+                    </div>
+                    {% endfor %} -->
+      
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="card-header bg-dark">
+              <div class="mx-0 mb-0 row justify-content-sm-center justify-content-start px-1 row"> 
+                 <div class="col-10">
+                  <input type="text" id="dp1"
+                  class="datepicker" placeholder="Pick Date" name="date" readonly
+                  onchange="updateTimes(this.value);">
+                 </div>
+              <div class="col-2">
+                  <span class="fa fa-calendar"></span>
+              </div>
+           </div>
+            </div> -->
+            <div class="d-grid col-6 mx-auto text-center ">
+              <button type="submit" class="btn btn-primary my-4 w-100">Submit</button>
+              
+            </div>
+            
+          </form>
+        </div>
+      </div>
+   
+    </div>
+  
+  </div>
+
+
+{% endblock %}
+
+
+{% block javascript %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+<script>
+
+function minDate(){
+
+  var dtToday = new Date();
+
+    
+    var month = dtToday.getMonth() ;
+   
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+    if(month < 10)
+        month = '0' + month.toString();
+    if(day < 10)
+        day = '0' + day.toString();
+    
+    var maxDate = year + '-' + month + '-' + day;
+
+    // or instead:
+    // var maxDate = dtToday.toISOString().substr(0, 10);
+
+   
+    let previousDate = document.getElementById('date')
+    previousDate.setAttribute('min', maxDate)
+    // $('#date').attr('min', maxDate);
+
+}
+
+minDate()
+
+
+    $("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
+        $("#success-alert").slideUp(500);
+    });
+    
+    
+    
+    
+    function showBtn(){
+      $("#slotSection").removeClass("d-none")
+      $("#showSlots").addClass("d-none")
+    
+    }
+    
+      function updateTimes(value,min) {
+        let service = document.getElementById('service').value;
+        let dateValue = document.getElementById("date").value;
+        // alert(service)
+        $.ajax({
+          type: "GET",
+          url: "{% url 'appointmentTime' %}",
+          type: "get",
+          data: { "date": dateValue,"service":service },
+    
+         
+          success: function (data) {
+         
+       
+            let timeslot = document.getElementById("time-slots")
+           
+            let section = document.createElement("section");
+
+            if(data.message === ""){
+              timeslot.classList.add("time-slot","border")
+              timeslot.textContent = "Please select a service first"
+           
+        }
+         
+else{
+  $("#time-slots").empty()
+  timeslot.classList.remove("time-slot")
+    for(var i =0; i< data["timeList"].length; i++){
+if (data['statusList'][i] == 0){
+$('#time-slots').append(`<div class=" col-md-4 col-sm-6 my-1">
+<div class="cell py-1 ">${data["timeList"][i]}
+                  <input type="hidden" value="${data["timeList"][i]}"  />
+                </div>
+              </div>`)
+}
+else{
+$('#time-slots').append(`<div class=" col-md-4 col-sm-6 my-1">
+  
+  <div class="cell-disable py-1 booked" title="Booked"><p class="p-0 m-0 ">${data["timeList"][i]}</p>
+                  <input type="hidden" value="${data["timeList"][i]}"  disabled/ required>
+                </div>
+              </div>`)
+}
+}
+}
+    
+     
+           
+            $('.cell').click(function () {
+        
+          $('.cell').removeClass('select');
+    
+          $('.cell').children("input").removeAttr("name")
+    
+    
+          $(this).addClass('select');
+          if ($(this).children("input").length > 0) {
+            $(this).children("input").attr("name", "time")
+          }
+        });
+          },
+          error: function () {
+            console.log("There was an error");
+          },
+        });
+      }
+    
+      $(document).ready( function() {
+           let todayDate = document.getElementById('date')
+           todayDate.valueAsDate = new Date();
+           todayDate.setAttribute('min',todayDate.value) 
+           updateTimes(todayDate.value)
+    });
+    
+    </script>
+    {% endblock  %}
